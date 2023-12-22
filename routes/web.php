@@ -20,7 +20,11 @@ Route::get('/', function () {
 });
 
 Route::get('/artikel', function () {
-    return view('artikel');
+    return view('pages.artikel');
+});
+
+Route::get('/userdashboard', function () {
+    return view('dashboard.user');
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
