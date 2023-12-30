@@ -17,7 +17,8 @@ return new class extends Migration
             $table->foreignId('category_id');
             $table->string('title');
             $table->text('body');
-            $table->boolean('is_approved');
+            $table->string('image');
+            $table->boolean('is_approved')->default(false);
             $table->timestamps();
         });
     }
