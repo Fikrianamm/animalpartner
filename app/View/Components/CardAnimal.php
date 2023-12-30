@@ -21,6 +21,8 @@ class CardAnimal extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.card-animal');
+        return view('components.card-animal',[
+            
+        ]);
     }
 }

@@ -13,7 +13,7 @@ class CreateChatifyMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('ch_messages', function (Blueprint $table) {
+        Schema::create('chats', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->bigInteger('from_id');
             $table->bigInteger('to_id');
@@ -31,6 +31,6 @@ class CreateChatifyMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ch_messages');
+        Schema::dropIfExists('chats');
     }
 }

@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="max-w-screen-xl flex items-start justify-between mx-auto p-4 min-h-screen">
+    <div class="flex items-start justify-between">
         <div class="grid grid-cols-1 md:grid-cols-2 w-full gap-4">
             <div>
                 <div class="flex gap-4">
