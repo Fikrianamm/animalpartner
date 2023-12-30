@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProfileController;
+use App\Models\Articles;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +17,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('index',[
+        'articles' => Articles::latest()->take(3)->get(),
+    ]);
 });
 
 Route::get('/artikel', function () {
     return view('pages.artikel');
+});
+
+Route::get('/artikel/{article:id}', function () {
+    return view('');
 });
 
 Route::get('/userdashboard', function () {
