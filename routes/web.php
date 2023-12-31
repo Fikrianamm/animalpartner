@@ -4,6 +4,7 @@ use App\Models\Articles;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ForumPostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +31,10 @@ Route::get('/artikel/{article:id}', function () {
     return view('');
 });
 
-Route::get('/userdashboard', function () {
-    return view('dashboard.user');
+Route::resource('/forum', ForumPostsController::class);
+
+Route::get('/konsultasi', function () {
+    return view('pages.konsultasi');
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');

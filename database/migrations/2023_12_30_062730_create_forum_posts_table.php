@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('forum_posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('category_id');
+            $table->foreignId('categories_id');
             $table->string('title');
             $table->text('body');
             $table->string('image');
