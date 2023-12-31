@@ -16,14 +16,12 @@
     </head>
     <body class="font-sans antialiased bg-white">
         <div class="min-h-screen relative">
-            @include('layouts.navigation')
-            
+            <x-navigation/>
             <!-- Page Content -->
             <main class="max-w-screen-xl mx-auto p-4 min-h-screen">
                 {{ $slot }}
             </main>
-
-            @include('components.footer')
+            <x-footer/>
         </div>
     </body>
 </html>
