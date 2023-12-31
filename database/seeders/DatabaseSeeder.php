@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Articles;
+use App\Models\Comments;
 use App\Models\Categories;
+use App\Models\Forum_posts;
 use Faker\Factory as Faker;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
@@ -70,6 +72,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Articles::factory(15)->create();
+        Forum_posts::factory(10)->create();
+        Comments::factory(20)->create();
     }
 
     private function createUsers($roleName, $roleSlug, $count)
