@@ -12,4 +12,8 @@ class Comments extends Model
     function forum_posts(){
         return $this->belongsTo(Forum_posts::class,'forum_post_id');
     }
+
+    function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

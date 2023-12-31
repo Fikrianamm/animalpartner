@@ -42,11 +42,10 @@ class ForumPostsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Forum_posts $forum_posts)
+    public function show(Forum_posts $forum)
     {
-        dd($forum_posts);
-        return view('pages.show-forum',[
-            'post' => $forum_posts,
+        return view('forum.show',[
+            'post' => $forum,
         ]);
     }
 

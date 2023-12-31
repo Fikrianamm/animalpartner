@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Forum_posts extends Model
 {
     use HasFactory;
         
     protected $guarded = ['id'];
+    protected $primaryKey = 'id';
+
     protected $with = ['user','comments'];
 
     public function scopeFilter($query, array $filters){
@@ -26,12 +29,17 @@ class Forum_posts extends Model
         });
     }
 
+    public function generateSlug()
+    {
+        return Str::slug($this->title);
+    }
+
     function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 
     function categories(){
-        return $this->belongsTo(Categories::class);
+        return $this->belongsTo(Categories::class, 'categories_id');
     }
 
     function comments(){
