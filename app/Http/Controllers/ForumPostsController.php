@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use App\Models\Forum_posts;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,9 @@ class ForumPostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('forum.create',[
+            'categories' => Categories::all(),
+        ]);
     }
 
     /**

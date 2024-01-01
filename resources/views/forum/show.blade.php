@@ -1,17 +1,15 @@
 <x-app-layout>
     <div class="w-9/12 mx-auto">
-        <a href="/forum" class="flex gap-2 items-center mb-6">
-            <img src="/assets/icons/arrow-left.svg" alt="">
-            <span>
-                Kembali
-            </span>
-        </a>
+        <x-back href="/forum" />
         <div class="border-b border-slate-300 pb-2">
             <h3 class="text-3xl font-semibold">{{ $post->title }}</h3>
-            <p class=" text-slate-500 flex gap-4 my-1">Dipost oleh {{ $post->user->name }}
-                <span>{{ $post->created_at->diffForHumans() }}</span>
-            </p>
-            <img src="{{ $post->image }}" alt="" class="w-1/2 my-2">
+            <div class=" text-slate-500 flex gap-4 my-1">
+                        Dipost oleh
+                        <img src="{{ $post->user->image }}" alt="avatar" class="w-7 h-7 rounded-full">
+                        {{ $post->user->name }} <span>{{ $post->created_at->diffForHumans() }}</span>
+                        <span>{{ $post->comments->count() }} Balasan</span>
+                    </div>
+            <img src="{{ $post->image }}" alt="" class="w-1/2 my-2 rounded-md">
             <div class="my-3">{!! $post->body !!}</div>
             <p class="text-slate-500">{{ $post->comments->count() }} Balasan</p>
         </div>
@@ -34,6 +32,7 @@
                 <div class="border-b border-slate-300 py-2">
                     <div class="flex gap-4 justify-start items-center">
                         <div class="flex gap-4 items-center">
+                        <img src="{{ $post->user->image }}" alt="avatar" class="w-7 h-7 rounded-full">
                             <h3 class="text-xl font-semibold">{{ $comment->user->name }}</h3>
                             @if ($comment->user->role == 'dokter')
                                 <span

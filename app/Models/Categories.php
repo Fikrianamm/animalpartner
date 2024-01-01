@@ -12,4 +12,8 @@ class Categories extends Model
     function forum_posts(){
         return $this->hasMany(Forum_posts::class);
     }
+    
+    function articles(){
+        return $this->hasMany(Articles::class);
+    }
 }
