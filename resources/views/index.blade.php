@@ -17,7 +17,7 @@
             <h2 class="text-4xl font-bold">Artikel Terbaru</h2>
             <a class="hover:underline text-xl font-light" href="/artikel">Lihat Semua</a>
         </div>
-        <div class="grid grid-cols-3 gap-4 items-start justify-center">
+        <div class="grid grid-cols-4 gap-4 items-start justify-center">
         @foreach ($articles as $article)
             <x-artikel-item :article="$article"/>
         @endforeach

@@ -21,7 +21,7 @@ use App\Http\Controllers\ForumPostsController;
 
 Route::get('/', function () {
     return view('index',[
-        'articles' => Articles::latest()->take(3)->get(),
+        'articles' => Articles::latest()->take(4)->get(),
     ]);
 });
 

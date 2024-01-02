@@ -19,8 +19,8 @@ class ArticlesController extends Controller
 
         return view('pages.artikel',[
             'active' => $active,
-            'latest' => Articles::latest()->get(),
-            'articles' => Articles::latest()->filter(request(['search','category']))->get()
+            'latests' => Articles::latest()->take(6)->get(),
+            'articles' => Articles::latest()->filter(request(['search','category']))->paginate(12)->withQueryString()
         ]);
     }
 

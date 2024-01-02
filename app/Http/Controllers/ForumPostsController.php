@@ -20,7 +20,7 @@ class ForumPostsController extends Controller
 
         return view('pages.forum',[
             'active' => $active,
-            'posts' => Forum_posts::latest()->filter(request(['search','category']))->get()
+            'posts' => Forum_posts::latest()->filter(request(['search','category']))->paginate(5)->withQueryString()
         ]);
     }
 
