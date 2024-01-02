@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -27,11 +26,6 @@ class Forum_posts extends Model
                 $query->where('name', $category);
             });
         });
-    }
-
-    public function generateSlug()
-    {
-        return Str::slug($this->title);
     }
 
     function user(){

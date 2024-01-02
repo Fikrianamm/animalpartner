@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Articles;
 use Illuminate\Http\Request;
 
 class ArticlesController extends Controller
@@ -11,7 +12,16 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        //
+        $active = null;
+        if(request('category')){
+            $active = request('category');
+        }
+
+        return view('pages.artikel',[
+            'active' => $active,
+            'latests' => Articles::latest()->take(6)->get(),
+            'articles' => Articles::latest()->filter(request(['search','category']))->paginate(12)->withQueryString()
+        ]);
     }
 
     /**

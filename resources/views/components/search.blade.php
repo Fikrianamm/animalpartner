@@ -1,5 +1,5 @@
 @props(['name'])
-<form action="/forum" method="get" class="flex-1">   
+<form action="/{{$name}}" method="get" class="flex-1">   
     @csrf
     <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
     <div class="relative">

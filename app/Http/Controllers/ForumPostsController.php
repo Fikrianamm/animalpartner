@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use App\Models\Forum_posts;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,7 @@ class ForumPostsController extends Controller
 
         return view('pages.forum',[
             'active' => $active,
-            'posts' => Forum_posts::latest()->filter(request(['search','category']))->get()
+            'posts' => Forum_posts::latest()->filter(request(['search','category']))->paginate(5)->withQueryString()
         ]);
     }
 
@@ -28,7 +29,9 @@ class ForumPostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('forum.create',[
+            'categories' => Categories::all(),
+        ]);
     }
 
     /**

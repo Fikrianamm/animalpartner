@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticlesController;
 use App\Models\Articles;
 use App\Models\Forum_posts;
 use Illuminate\Support\Facades\Route;
@@ -20,17 +21,11 @@ use App\Http\Controllers\ForumPostsController;
 
 Route::get('/', function () {
     return view('index',[
-        'articles' => Articles::latest()->take(3)->get(),
+        'articles' => Articles::latest()->take(4)->get(),
     ]);
 });
 
-Route::get('/artikel', function () {
-    return view('pages.artikel');
-});
-
-Route::get('/artikel/{article:id}', function () {
-    return view('');
-});
+Route::resource('/artikel', ArticlesController::class);
 
 Route::resource('/forum', ForumPostsController::class);
 
