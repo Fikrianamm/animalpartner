@@ -19,11 +19,11 @@ class Forum_postsFactory extends Factory
         $categoryId = mt_rand(1, 5);
 
         $categoryImageMap = [
-            1 => "https://source.unsplash.com/500x400?cattle",
-            2 => "https://source.unsplash.com/500x400?dog",
-            3 => "https://source.unsplash.com/500x400?rabbit",
-            4 => "https://source.unsplash.com/500x400?cat",
-            5 => "https://source.unsplash.com/500x400?bird",
+            1 => "https://source.unsplash.com/500x400?Anjing",
+            2 => "https://source.unsplash.com/500x400?Kucing",
+            3 => "https://source.unsplash.com/500x400?Burung",
+            4 => "https://source.unsplash.com/500x400?Hewan%20Ternak",
+            5 => "https://source.unsplash.com/500x400?Kelinci",
         ];
 
         return [
