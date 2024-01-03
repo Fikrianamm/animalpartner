@@ -2,25 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Articles;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class ArticlesController extends Controller
+class ConsultationController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $active = null;
-        if(request('category')){
-            $active = request('category');
-        }
-
-        return view('pages.artikel',[
-            'active' => $active,
-            'latests' => Articles::latest()->take(8)->get(),
-            'articles' => Articles::latest()->filter(request(['search','category']))->paginate(12)->withQueryString()
+        return view('pages.konsultasi',[
+            'doctors' => User::where('role','dokter')->filter(request(['search']))->paginate(9)->withQueryString()
         ]);
     }
 
@@ -43,18 +36,15 @@ class ArticlesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Articles $artikel)
+    public function show(User $user)
     {
-        return view('artikel.show',[
-            'article' => $artikel,
-            'current' => 'artikel',
-        ]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
         //
     }
@@ -62,7 +52,7 @@ class ArticlesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -70,7 +60,7 @@ class ArticlesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
         //
     }

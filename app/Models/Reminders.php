@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Reminders extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+    protected $primaryKey = 'id';
+
+
+    function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    function animal(){
+        return $this->belongsTo(Animals::class);
+    }
 }

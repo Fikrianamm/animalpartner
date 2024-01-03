@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('animal_id');
             $table->string('reminder_type');
             $table->text('description');
-            $table->date('due_date');
+            $table->datetime('due_date');
             $table->boolean('is_completed');
             $table->timestamps();
         });

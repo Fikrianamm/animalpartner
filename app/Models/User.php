@@ -44,11 +44,37 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function scopeFilter($query, array $filters){
+
+        $query->when($filters['search']??false,function($query, $search){
+            return $query->where(fn($query)=>
+                $query->where('name','like', '%' . $search . '%')
+        );
+        });
+    }
+
     function forum_posts(){
         return $this->hasMany(Forum_posts::class);
     }
 
     function comments(){
         return $this->hasMany(Comments::class);
+    }
+
+    function animals(){
+        return $this->hasMany(Animals::class);
+    }
+
+    function reminders(){
+        return $this->hasMany(Reminders::class);
+    }
+
+    function articles(){
+        return $this->hasMany(Articles::class);
+    }
+
+    public function doctor_profil()
+    {
+        return $this->hasOne(Doctor_profil::class);
     }
 }

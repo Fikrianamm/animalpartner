@@ -29,10 +29,10 @@ class Articles extends Model
     }
 
     function categories(){
-        return $this->belongsTo(Categories::class, 'categories_id');
+        return $this->belongsTo(Categories::class);
     } 
 
     function user(){
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     } 
 }

@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\AnimalsController;
+use App\Http\Controllers\ConsultationController;
 use App\Models\Articles;
-use App\Models\Forum_posts;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ForumPostsController;
 
@@ -29,9 +30,9 @@ Route::resource('/artikel', ArticlesController::class);
 
 Route::resource('/forum', ForumPostsController::class);
 
-Route::get('/konsultasi', function () {
-    return view('pages.konsultasi');
-});
+Route::resource('/konsultasi', ConsultationController::class);
+
+Route::resource('/animal', AnimalsController::class);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -39,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/forum/create', [ForumPostsController::class, 'create']);
 });
 
 require __DIR__.'/auth.php';

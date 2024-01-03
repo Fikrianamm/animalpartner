@@ -1,9 +1,14 @@
-<a href="#" class="w-full flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-md md:flex-row md:max-w-xl ">
-    <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="/storage/animals/anjing.jpg" alt="">
-    <div class="flex flex-col justify-between p-4 leading-normal w-full">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Miko</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400 flex justify-between">Spesies <span>Kucing</span></p>
-            <p class="font-normal text-gray-700 dark:text-gray-400 flex justify-between">Ras <span>Maine coone</span></p>
-            <p class="font-normal text-gray-700 dark:text-gray-400 flex justify-between">Umur <span>1 Tahun</span></p>
+@props(['animal'])
+
+<div
+    class="max-w-sm bg-white border border-gray-200 hover:border-gray-400 rounded-lg hover:shadow-lg dark:bg-gray-800 dark:border-gray-700">
+    <a href="/animal/{{ $animal->id }}">
+        <img class="rounded-t-lg " src="{{ $animal->image }}" alt="" />
+    </a>
+    <div class="px-3 py-2">
+        <a href="/animal/{{ $animal->id }}" class="mb-1 text-lg line-clamp-2 font-bold tracking-tight text-gray-900 dark:text-white">
+            {{ $animal->name }}</a>
+        <p class="font-normal text-base text-gray-700 dark:text-gray-400">Spesies {{ $animal->species }}</p>
+        <p class="mb-2 font-normal text-base text-gray-700 dark:text-gray-400">Umur {{ $animal->age }}</p>
     </div>
-</a>
+</div>

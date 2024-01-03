@@ -13,7 +13,7 @@ class ForumPostsController extends Controller
      */
     public function index()
     {
-        $active = null;
+        $active = 'Semua';
         if(request('category')){
             $active = request('category');
         }
@@ -30,6 +30,7 @@ class ForumPostsController extends Controller
     public function create()
     {
         return view('forum.create',[
+            'current' => 'forum',
             'categories' => Categories::all(),
         ]);
     }
@@ -48,6 +49,7 @@ class ForumPostsController extends Controller
     public function show(Forum_posts $forum)
     {
         return view('forum.show',[
+            'current' => 'forum',
             'post' => $forum,
         ]);
     }
