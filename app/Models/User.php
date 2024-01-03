@@ -61,7 +61,7 @@ class User extends Authenticatable
         return $this->hasMany(Comments::class);
     }
 
-    function animals(){
+    function animal(){
         return $this->hasMany(Animals::class);
     }
 
@@ -73,7 +73,7 @@ class User extends Authenticatable
         return $this->hasMany(Articles::class);
     }
 
-    public function doctor_profil()
+    function doctor_profil()
     {
         return $this->hasOne(Doctor_profil::class);
     }
