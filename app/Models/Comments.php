@@ -10,10 +10,10 @@ class Comments extends Model
     use HasFactory;
 
     function forum_posts(){
-        return $this->belongsTo(Forum_posts::class,'forum_post_id');
+        return $this->belongsTo(Forum_posts::class);
     }
 
     function user(){
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 }

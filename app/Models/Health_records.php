@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Health_records extends Model
 {
     use HasFactory;
+
+    function animals(){
+        return $this->belongsTo(Animals::class);
+    }
 }

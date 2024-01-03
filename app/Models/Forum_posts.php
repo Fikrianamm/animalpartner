@@ -29,11 +29,11 @@ class Forum_posts extends Model
     }
 
     function user(){
-        return $this->belongsTo(User::class,'user_id');
+        return $this->belongsTo(User::class);
     }
 
     function categories(){
-        return $this->belongsTo(Categories::class, 'categories_id');
+        return $this->belongsTo(Categories::class);
     }
 
     function comments(){

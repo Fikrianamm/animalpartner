@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('health_records', function (Blueprint $table) {
             $table->id();
             $table->foreignId('animal_id');
+            $table->string('record_type');
             $table->string('description');
             $table->date('date');
             $table->timestamps();

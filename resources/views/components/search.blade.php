@@ -1,5 +1,5 @@
-@props(['name'])
-<form action="/{{$name}}" method="get" class="flex-1">   
+@props(['name', 'href' => '#'])
+<form action="/{{$href}}" method="get" class="flex-1">   
     @csrf
     <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
     <div class="relative">
@@ -9,7 +9,7 @@
             </svg>
         </div>
         <input type="hidden" name="category" value="{{request('category')}}">
-        <input type="search" id="search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-teal-500 focus:border-teal-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500" placeholder="Cari {{$name}}" name="search" value="{{request('search')}}" required>
+        <input type="search" id="search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-teal-500 focus:border-teal-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500" placeholder="Cari {{$name}}" name="search" value="{{request('search')}}">
         <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-teal-500 hover:bg-teal-600 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-teal-600 dark:hover:bg-teal-500 dark:focus:ring-teal-800">Search</button>
     </div>
 </form>

@@ -13,22 +13,13 @@
                 </div>
             </div>
             <div class="overflow-y-scroll h-[452px] rounded-md w-4/12">
-                @foreach ($latests as $latest)
-                <div class="flex p-2 gap-2">
-                    <img src="{{$latest->image}}" alt="" class="w-24 h-16 rounded-md">
-                    <div class="flex-1 flex flex-col justify-between">
-                        <a href="/artikel{{$latest->id}}" class="hover:text-blue-500 text-xs line-clamp-2 font-semibold">{{ $latest->title }}</a>
-                        <div class="flex gap-2">
-                            <a href="/artikel?category={{$latest->categories->name}}" class="bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-2 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">{{$latest->categories->name}}</a>
-                            <small class="text-slate-500 text-xs">{{$latest->created_at->diffForHumans()}}</small>
-                        </div>
-                    </div>
-                </div>
+                @foreach ($latests->skip(1) as $latest)
+                <x-display-artikel :latest="$latest"/>
                 @endforeach
             </div>
         </div>
         <div class="mt-16" >
-            <x-search name="artikel"/>
+            <x-search name="artikel" href="artikel" />
             <x-categories name="artikel" active="{{$active}}"/>
         </div>
         <div class="grid grid-cols-4 gap-4 items-start justify-center mb-4">

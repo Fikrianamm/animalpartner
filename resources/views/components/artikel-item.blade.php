@@ -1,6 +1,6 @@
 @props(['article'])
 
-<div class="max-w-sm bg-white border border-gray-200 hover:border-gray-500 rounded-lg hover:shadow-lg dark:bg-gray-800 dark:border-gray-700">
+<div class="max-w-sm bg-white border border-gray-200 hover:border-gray-400 rounded-lg hover:shadow-lg dark:bg-gray-800 dark:border-gray-700">
     <a href="/artikel/{{ $article->id }}">
         <img class="rounded-t-lg" src="{{$article->image}}" alt="" />
     </a>
