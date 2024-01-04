@@ -9,7 +9,11 @@ class Health_records extends Model
 {
     use HasFactory;
 
-    function animals(){
+    protected $guarded = ['id'];
+    protected $primaryKey = 'id';
+    protected $with = ['animal'];
+
+    function animal(){
         return $this->belongsTo(Animals::class);
     }
 }

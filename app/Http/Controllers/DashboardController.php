@@ -10,7 +10,24 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        date_default_timezone_set('Asia/Jakarta');
+        $species = [
+            'Anjing',
+            'Kucing',
+            'Burung',
+            'Kelinci',
+            'Ayam',
+            'Sapi',
+            'Kuda',
+        ];
+
+        $types = [
+            'Perawatan Umum',
+            'Vaksin',
+            'Pemeriksaan Rutin',
+            'Mandi',
+            'Obat',
+            'Grooming',
+        ];
 
         $role = auth()->user()->role;
         $id = auth()->user()->id; 
@@ -19,6 +36,8 @@ class DashboardController extends Controller
                 return view('dashboard.default',[
                     'animals' => Animals::where('user_id', $id)->get(),
                     'reminders' => Reminders::where('user_id', $id)->get(),
+                    'species' => $species,
+                    'types' => $types,
                 ]);
             
             case 'dokterhewan':

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('reminder_type');
             $table->text('description');
             $table->datetime('due_date');
-            $table->boolean('is_completed');
+            $table->boolean('is_completed')->default(false);
             $table->timestamps();
         });
     }

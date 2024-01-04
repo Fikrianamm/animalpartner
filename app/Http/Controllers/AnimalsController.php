@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Animals;
+use App\Models\Health_records;
 use Illuminate\Http\Request;
 
 class AnimalsController extends Controller
@@ -33,9 +35,34 @@ class AnimalsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Animals $animal)
     {
-        //
+        $species = [
+            'Anjing',
+            'Kucing',
+            'Burung',
+            'Kelinci',
+            'Ayam',
+            'Sapi',
+            'Kuda',
+        ];
+
+        $types = [
+            'Perawatan Umum',
+            'Vaksin',
+            'Pemeriksaan Rutin',
+            'Mandi',
+            'Obat',
+            'Grooming',
+        ];
+
+        $id = $animal->id;
+        return view('animal.show',[
+            'animal' => $animal,
+            'health_records' => Health_records::where('animal_id', $id)->get(),
+            'species' => $species,
+            'types' => $types,
+        ]);
     }
 
     /**

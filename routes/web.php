@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ForumPostsController;
+use App\Http\Controllers\HealthRecordsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,8 +33,6 @@ Route::resource('/forum', ForumPostsController::class);
 
 Route::resource('/konsultasi', ConsultationController::class);
 
-Route::resource('/animal', AnimalsController::class);
-
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -41,6 +40,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/forum/create', [ForumPostsController::class, 'create']);
+    Route::resource('/animal', AnimalsController::class);
+    Route::resource('/healthrecord', HealthRecordsController::class);
 });
 
 require __DIR__.'/auth.php';
