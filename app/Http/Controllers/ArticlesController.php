@@ -20,8 +20,8 @@ class ArticlesController extends Controller
 
         return view('pages.artikel',[
             'active' => $active,
-            'latests' => Articles::latest()->take(8)->get(),
-            'articles' => Articles::latest()->filter(request(['search','category']))->paginate(12)->withQueryString()
+            'latests' => Articles::where('is_approved', true)->latest()->take(8)->get(),
+            'articles' => Articles::where('is_approved', true)->latest()->filter(request(['search','category']))->paginate(12)->withQueryString()
         ]);
     }
 
@@ -50,7 +50,6 @@ class ArticlesController extends Controller
     {
         return view('artikel.show',[
             'article' => $artikel,
-            'current' => 'artikel',
         ]);
     }
 

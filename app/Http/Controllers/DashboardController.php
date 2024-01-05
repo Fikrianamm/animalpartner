@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Animals;
 use App\Models\Articles;
 use App\Models\ChMessage;
@@ -57,7 +58,12 @@ class DashboardController extends Controller
                 ]);
             
             case 'admin':
-                return view('dashboard.admin');
+                return view('dashboard.admin',[
+                    'user' => auth()->user(),
+                    'articles' => Articles::where('is_approved', false)->latest()->filter(request(['search']))->paginate(10)->withQueryString(),
+                    'users' => User::whereNot('role','admin')->get(),
+                    
+                ]);
             
             default:
                 # code...
