@@ -1,9 +1,10 @@
 <x-app-layout>
     <div class="flex items-start justify-between w-11/12 mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-3 w-full gap-4">
+        <x-back href="/dashboard"/>
+        <div class="grid grid-cols-1 md:grid-cols-3 w-full gap-4 mt-12">
             <div class="col-span-2">
                 <div class="flex gap-4">
-                    <h2 class="text-3xl font-bold">Hewan Anda</h2>
+                    <h2 class="text-2xl font-bold">Hewan Anda</h2>
                 </div>
                 <div class="mt-4 grid grid-cols-3 gap-4">
                         <x-card-animal-show :animal="$animal" :species="$species"/>
@@ -11,7 +12,7 @@
             </div>
             <div class="mt-4">
                 <div class="flex gap-4">
-                    <h2 class="text-3xl font-bold">Riwayat Kesehatan</h2>
+                    <h2 class="text-2xl font-bold">Riwayat Kesehatan</h2>
 
                     <!-- addnote Modal toggle -->
                     <x-modal-toggle name="addnote"/>

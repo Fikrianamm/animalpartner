@@ -85,9 +85,9 @@ class DatabaseSeeder extends Seeder
         for ($i = 1; $i <= $count; $i++) {
             DB::table('users')->insert([
                 'name' => $faker->name,
-                'email' => $faker->unique()->safeEmail,
+                'email' => fake()->userName . '@gmail.com',
                 'email_verified_at' => now(),
-                'password' => Hash::make('password123'),
+                'password' => Hash::make('password'),
                 'role' => $roleSlug,
                 'remember_token' => Str::random(10),
                 'created_at' => now(),

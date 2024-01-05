@@ -39,29 +39,13 @@
                   <div class="app-modal-body">
                       {{-- Udate profile avatar --}}
                       <div class="avatar av-l upload-avatar-preview chatify-d-flex"
-                      style="background-image: url('{{ Chatify::getUserWithAvatar(Auth::user())->avatar }}');"
+                      style="background-image: url('{{ Chatify::getUserWithAvatar(Auth::user())->image }}');"
                       ></div>
                       <p class="upload-avatar-details"></p>
                       <label class="app-btn a-btn-primary update" style="background-color:{{$messengerColor}}">
                           Upload New
                           <input class="upload-avatar chatify-d-none" accept="image/*" name="avatar" type="file" />
                       </label>
-                      {{-- Dark/Light Mode  --}}
-                      <p class="divider"></p>
-                      <p class="app-modal-header">Dark Mode <span class="
-                        {{ Auth::user()->dark_mode > 0 ? 'fas' : 'far' }} fa-moon dark-mode-switch"
-                         data-mode="{{ Auth::user()->dark_mode > 0 ? 1 : 0 }}"></span></p>
-                      {{-- change messenger color  --}}
-                      <p class="divider"></p>
-                      {{-- <p class="app-modal-header">Change {{ config('chatify.name') }} Color</p> --}}
-                      <div class="update-messengerColor">
-                      @foreach (config('chatify.colors') as $color)
-                        <span style="background-color: {{ $color}}" data-color="{{$color}}" class="color-btn"></span>
-                        @if (($loop->index + 1) % 5 == 0)
-                            <br/>
-                        @endif
-                      @endforeach
-                      </div>
                   </div>
                   <div class="app-modal-footer">
                       <a href="javascript:void(0)" class="app-btn cancel">Cancel</a>

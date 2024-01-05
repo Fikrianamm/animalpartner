@@ -14,7 +14,7 @@
                     <li>
                         <a href="/forum"
                             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-rose-700 md:p-0 ">Forum
-                            </a>
+                        </a>
                     </li>
                     <li>
                         <a href="/artikel"
@@ -31,6 +31,28 @@
             @if (Route::has('login'))
                 <div class="flex items-center">
                     @auth
+                        <button id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification"
+                            class="relative mr-4 inline-flex items-center text-sm font-medium text-center text-gray-500 hover:text-gray-900 focus:outline-none dark:hover:text-white dark:text-gray-400"
+                            type="button">
+                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 14 20">
+                                <path
+                                    d="M12.133 10.632v-1.8A5.406 5.406 0 0 0 7.979 3.57.946.946 0 0 0 8 3.464V1.1a1 1 0 0 0-2 0v2.364a.946.946 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C1.867 13.018 0 13.614 0 14.807 0 15.4 0 16 .538 16h12.924C14 16 14 15.4 14 14.807c0-1.193-1.867-1.789-1.867-4.175ZM3.823 17a3.453 3.453 0 0 0 6.354 0H3.823Z" />
+                            </svg>
+
+                            <div
+                                class="absolute block w-3 h-3 bg-red-500 border-2 border-white rounded-full -top-0.5 start-2.5 dark:border-gray-900">
+                            </div>
+                        </button>
+
+                        @if (Auth()->user()->role == 'pemilikhewan')
+                            <x-notif-display />
+                        @elseif (Auth()->user()->role == "dokter")
+                            <x-notif-display-dokter />
+                        @else(Auth()->user()->role == "admin")
+                            <x-notif-display-admin />
+                        @endif
+
                         <button type="button" class="flex text-sm items-center text-gray-500 hover:text-gray-700"
                             id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                             data-dropdown-placement="bottom">
@@ -103,7 +125,7 @@
                 <li>
                     <a href="/forum"
                         class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-rose-700 md:p-0 ">Forum
-                        </a>
+                    </a>
                 </li>
                 <li>
                     <a href="/artikel"
@@ -114,16 +136,16 @@
                         class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-rose-700 md:p-0 ">Konsultasi</a>
                 </li>
                 @auth
-                    @else
-                <li>
-                    <a href="{{ route('login') }}"
-                    class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-rose-700 md:p-0 ">Log
-                    in</a>
-                </li>
-                <li>
-                    <a href="{{ route('register') }}"
-                    class="block py-2 px-3 rounded bg-teal-500 font-semibold text-white hover:bg-teal-600 md:p-0 ">Register</a>
-                </li>
+                @else
+                    <li>
+                        <a href="{{ route('login') }}"
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-rose-700 md:p-0 ">Log
+                            in</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('register') }}"
+                            class="block py-2 px-3 rounded bg-teal-500 font-semibold text-white hover:bg-teal-600 md:p-0 ">Register</a>
+                    </li>
                 @endauth
             </ul>
         </div>

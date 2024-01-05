@@ -73,6 +73,10 @@ class User extends Authenticatable
         return $this->hasMany(Articles::class);
     }
 
+    function chmessages(){
+        return $this->hasMany(ChMessage::class);
+    }
+
     function doctor_profil()
     {
         return $this->hasOne(Doctor_profil::class);
