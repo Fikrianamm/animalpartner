@@ -1,4 +1,4 @@
-@props(['animal', 'species'])
+@props(['animal', 'species', 'user'])
 
 <div id="addpet-modal" tabindex="-1" aria-hidden="true"
     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -23,15 +23,17 @@
             </div>
             <!-- Modal body -->
             <div class="p-4 md:p-5">
-                <form class="space-y-4" action="#">
+                <form class="space-y-4" action="/animal/{{$animal->id}}" method="post" enctype="multipart/form-data">
+                    @method('put')
                     @csrf
                     <div>
+                        <input type="hidden" name="user_id" id="user_id" value="{{ $user->id }}">
                         <input type="text" name="nama" id="nama" value="{{ $animal->name }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                             placeholder="Nama Hewan" required>
                     </div>
                     <div>
-                        <select id="spesies"
+                        <select id="spesies" name="spesies"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             required>
                             <option value="{{ $animal->species }}" selected>{{ $animal->species }}</option>
@@ -44,17 +46,18 @@
 
                     </div>
                     <div>
-                        <input type="number" name="umur" id="umur" placeholder="Umur Hewan" value="{{$animal->age}}"
+                        <input type="number" name="umur" id="umur" placeholder="Umur Hewan"
+                            value="{{ $animal->age }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                             required>
                     </div>
                     <div>
 
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                            for="file_input">Upload file</label>
+                            for="foto_hewan">Upload file</label>
                         <input
                             class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                            id="file_input" type="file">
+                            id="foto_hewan" name="foto_hewan" accept=".jpg, .jpeg, .png" type="file">
 
                     </div>
                     <button type="submit"

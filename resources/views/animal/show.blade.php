@@ -7,7 +7,7 @@
                     <h2 class="text-2xl font-bold">Hewan Anda</h2>
                 </div>
                 <div class="mt-4 grid grid-cols-3 gap-4">
-                        <x-card-animal-show :animal="$animal" :species="$species"/>
+                        <x-card-animal-show :animal="$animal" :species="$species" :user="$user"/>
                 </div>
             </div>
             <div class="mt-4">

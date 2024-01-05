@@ -12,7 +12,7 @@
                     <x-modal-toggle name="addpet" />
 
                     <!-- addpet Main modal -->
-                    <x-pet-modal :species="$species">Tambah</x-pet-modal>
+                    <x-pet-modal :species="$species" :user="$user">Tambah</x-pet-modal>
 
                 </div>
                 <div class="mt-4 grid grid-cols-3 gap-4">
