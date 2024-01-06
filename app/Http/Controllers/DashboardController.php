@@ -45,6 +45,7 @@ class DashboardController extends Controller
                     'types' => $types,
                     'chats' => ChMessage::where('to_id', $id)->latest()->get(),
                     'user' => auth()->user(),
+                    'posts' => Forum_posts::where('user_id', $id)->get(),
 
                 ]);
             

@@ -9,6 +9,7 @@
                 <label for="judul" class="block mb-2 text-xl font-medium text-gray-700 dark:text-white">
                     Judul <span class="text-red-600">*</span></label>
                 <input type="text" id="judul" name="judul" placeholder="Judul diskusi"
+                    value="{{ $post->title }}"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required>
             </div>
@@ -18,16 +19,19 @@
                 <select id="kategori" name="kategori"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required>
-                    <option selected disabled>Pilih kategori</option>
                     @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @if ($category == $post->categories->name)
+                            <option value="{{ $category }}" selected>{{ $category }}</option>
+                        @else
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endif
                     @endforeach
                 </select>
             </div>
             <div class="mb-4">
                 <label for="deskripsi" class="block mb-2 text-xl font-medium text-gray-700 dark:text-white">
                     Deskripsi <span class="text-red-600">*</span></label>
-                <textarea id="deskripsi" name="deskripsi" rows="4"
+                <textarea id="deskripsi" name="deskripsi" rows="4" value="{{ $post->body }}"
                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Deskripsi artikel" required></textarea>
             </div>

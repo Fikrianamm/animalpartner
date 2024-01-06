@@ -1,4 +1,5 @@
 <x-app-layout>
+    <x-success-toast />
     <div class="text-center flex flex-col items-center my-4">
         <h3 class="text-4xl font-semibold mb-2">Forum Diskusi</h3>
         <p class="text-xl font-light w-10/12 text-slate-700">Temukan Jawaban: Tanyakan pertanyaan Anda, dan temukan

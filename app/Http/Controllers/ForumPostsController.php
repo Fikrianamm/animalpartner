@@ -29,8 +29,10 @@ class ForumPostsController extends Controller
      */
     public function create()
     {
+        $user = auth()->user();
         return view('forum.create',[
             'categories' => Categories::all(),
+            'user' => $user,
         ]);
     }
 
@@ -39,7 +41,27 @@ class ForumPostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'user_id' => 'required',
+            'judul' => 'required',
+            'kategori' => 'required',
+            'deskripsi' => 'required',
+            'foto_diskusi' => 'image|file|max:10024',
+        ]);
+
+        if ($request->file('foto_diskusi')) {
+            $validateData['foto_diskusi'] = $request->file('foto_diskusi')->store('diskusi');
+        }
+
+        Forum_posts::create([
+            'user_id' => $validateData['user_id'],
+            'categories_id' => $validateData['kategori'],
+            'title' => $validateData['judul'],
+            'body' => $validateData['deskripsi'],
+            'image' => $validateData['foto_diskusi'],
+        ]);
+
+        return redirect('/forum')->with('success', 'Add Disscusses Successfully!');
     }
 
     /**
@@ -55,9 +77,14 @@ class ForumPostsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Forum_posts $forum)
     {
-        //
+        return view('forum.edit',[
+            'post' => $forum,
+            'user' => auth()->user(),
+            'categories' => Categories::all(),
+
+        ]);
     }
 
     /**
